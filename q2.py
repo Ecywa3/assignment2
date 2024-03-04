@@ -1,5 +1,5 @@
 import torch
-import torch.nn as nn
+from torch import nn
 import torchvision.models as models
 from utils import q2_get_train_loader, q2_get_test_loader, test_accuracy
 
@@ -33,6 +33,7 @@ def train_model():
             
             # Your code here: Perform gradient descent
 
+            # Optional: Show accuracy (if you copy from q1, no need to include "if...% 100..." check as we only have few batches)
             pass
 
     return model
