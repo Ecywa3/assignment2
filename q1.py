@@ -1,9 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
 import torch
 from torch import nn
-import torchvision
-import torchvision.transforms as transforms
 from utils import q1_get_train_loader, q1_get_test_loader, test_accuracy
 
 CLASSES = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
