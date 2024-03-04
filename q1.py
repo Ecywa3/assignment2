@@ -63,4 +63,5 @@ def train_model():
 if __name__ == "__main__":
     model = train_model()
     torch.save(model, 'q1.pth')
+    print(f'Train dataset accuracy is : {test_accuracy(model, q1_get_train_loader()):.2f}%')
     print(f'Test dataset accuracy is : {test_accuracy(model, q1_get_test_loader()):.2f}%')
