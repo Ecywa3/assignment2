@@ -5,7 +5,6 @@ from utils import q1_get_train_loader, q1_get_test_loader, test_accuracy
 CLASSES = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 
-
 class NeuralNetwork(torch.nn.Module):
     def __init__(self):
         super().__init__()
@@ -15,9 +14,13 @@ class NeuralNetwork(torch.nn.Module):
         output_size = len(CLASSES)
         # Configurable: Define our network
         self.layers = nn.Sequential(
-            nn.Linear(input_size, 32),
-            nn.Sigmoid(),
-            nn.Linear(32, output_size)
+            nn.Linear(input_size, 64),
+            nn.ReLU(),
+            nn.Linear(64, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_size),
         )
 
     def forward(self, x):
@@ -35,9 +38,9 @@ def train_model():
     # Loss function: We use Cross Entropy Loss for multi-class classification
     loss_fn = torch.nn.CrossEntropyLoss()
     # Configurable: Optimizer
-    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
     # Configurable: Epoch
-    number_of_epoch = 2
+    number_of_epoch = 5
 
     # Start training
     for epoch in range(1, number_of_epoch + 1):
